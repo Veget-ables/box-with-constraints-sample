@@ -1,7 +1,9 @@
 package com.example.box_with_constraints_sample
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,13 +25,18 @@ fun SampleScreen() {
     BoxWithConstraints {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item {
-                Image(
-                    painter = painterResource(R.drawable.ic_flower),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .size(100.dp)
-                )
+                Column(
+                    modifier = Modifier.height(maxHeight - (groundLayerHeight + groundLayerHeight / 2)),
+                    verticalArrangement = Arrangement.Bottom
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.ic_flower),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .size(100.dp)
+                    )
+                }
             }
             items(groundColors) { color ->
                 Surface(
@@ -42,6 +49,8 @@ fun SampleScreen() {
         }
     }
 }
+
+val groundLayerHeight = 60.dp
 
 val groundColors = listOf(
     Color(0xFFEFEBE9), // Brown 50
