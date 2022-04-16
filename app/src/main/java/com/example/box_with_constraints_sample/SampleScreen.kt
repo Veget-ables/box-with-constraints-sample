@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,6 +24,14 @@ import com.example.box_with_constraints_sample.ui.theme.Boxwithconstraintssample
 @Composable
 fun SampleScreen() {
     BoxWithConstraints {
+        Image(
+            painter = painterResource(R.drawable.ic_sunny),
+            contentDescription = null,
+            modifier = Modifier
+                .size(80.dp)
+                .padding(16.dp),
+        )
+
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             item {
                 Column(
@@ -42,7 +51,7 @@ fun SampleScreen() {
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp),
+                        .height(groundLayerHeight),
                     color = color
                 ) {}
             }
@@ -50,9 +59,9 @@ fun SampleScreen() {
     }
 }
 
-val groundLayerHeight = 60.dp
+private val groundLayerHeight = 100.dp
 
-val groundColors = listOf(
+private val groundColors = listOf(
     Color(0xFFEFEBE9), // Brown 50
     Color(0xFFD7CCC8), // Brown 100
     Color(0xFFBCAAA4), // Brown 200
@@ -67,7 +76,7 @@ val groundColors = listOf(
 
 @Preview(showSystemUi = true, device = Devices.PIXEL_3A_XL)
 @Composable
-fun DefaultPreview() {
+fun Preview() {
     BoxwithconstraintssampleTheme {
         Surface {
             SampleScreen()
